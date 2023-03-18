@@ -51,9 +51,9 @@ in
 
   users = {
     defaultUserShell = pkgs.fish;
-    users.q = {
+    users.aquinary = {
       isNormalUser = true;
-      description = "q";
+      description = "aquinary";
       extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     };
   };
@@ -116,7 +116,7 @@ in
         defaultSession = "none+awesome";
         autoLogin = {
           enable = true;
-          user = "q"; 
+          user = "aquinary"; 
          };
       };
     };
@@ -149,9 +149,9 @@ in
         }; 
       };
     };
-    q = {config, pkgs, ...}: {
-      home.username = "q";
-      home.homeDirectory = "/home/q";
+    aquinary = {config, pkgs, ...}: {
+      home.username = "aquinary";
+      home.homeDirectory = "/home/aquinary";
       home.stateVersion = "22.11";
       home.packages = with pkgs; [
         mate.mate-polkit
