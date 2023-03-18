@@ -19,7 +19,7 @@ in
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
  
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "yoshinon"; # Define your hostname.
 
   security.polkit.enable = true;
 
@@ -71,7 +71,6 @@ in
     dex
     qemu
     gnome.gucharmap
-    gnome.gnome-font-viewer
     wget
     material-icons
     git
@@ -132,7 +131,9 @@ in
       home = {
         file = {
           ".config/gtk-3.0/settings.ini".source = ./configs/gtk-3.0/settings-dark.ini;
-         
+          ".config/gtk-3.0/colors.css".source = ./configs/gtk-3.0/colors.css;
+          ".config/gtk-3.0/gtk.css".source = ./configs/gtk-3.0/gtk.css;
+
           ".config/sakura/sakura.conf".source = ./configs/sakura/sakura.conf;
           ".config/Kvantum".source = ./configs/Kvantum; 
           ".config/qt5ct".source = ./configs/qt5ct;
@@ -140,7 +141,7 @@ in
           ".config/fish".source = ./configs/fish;
           ".config/dconf".source = ./configs/dconf;
 
-           ".themes/Seventeen-Dark".source = ./themes/Seventeen-Dark;
+          ".themes/Seventeen-Dark".source = ./themes/Seventeen-Dark;
           ".icons".source = ./icons;
 
           ".local/share/fonts".source = ./locals/fonts;
