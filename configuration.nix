@@ -20,11 +20,8 @@ in
   boot.loader.grub.useOSProber = true;
  
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
   security.polkit.enable = true;
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -70,12 +67,6 @@ in
     platformTheme = "qt5ct";
   };
 
-  # nixpkgs.overlays = [(self: super: {
-  #   vscode = super.vscode.override {
-  #     buildInputs = [];
-  #   };
-  # })];
-
   environment.systemPackages = with pkgs; [
     dex
     qemu
@@ -88,30 +79,27 @@ in
     ranger
     gtk3
     gnome.seahorse
-    (pkgs.callPackage ./dotfiles/pkgs/caja-extensions { })
-    (pkgs.callPackage ./dotfiles/pkgs/vscode { })
+    (pkgs.callPackage ./pkgs/caja-extensions { })
     unzip
     unrar
     feh
     neofetch
-    #virt-manager
+    virt-manager
     mate.engrampa
     btop
     lm_sensors
     copyq
-    #crow-translate
+    crow-translate
     sakura
-    (vscode.overrideAttrs(old: rec {
-      runtimeDependencies = lib.optionals stdenv.isLinux pkexec [ (lib.getLib systemd) fontconfig.lib libdbusmenu wayland ];
-    }))
-    #tdesktop
+    vscode
+    tdesktop
     vivaldi
     rofi
     lxappearance
     lua
     sublime4
-    #gparted
-    #xfce.catfish
+    gparted
+    xfce.catfish
     libsForQt5.qtstyleplugin-kvantum
   ];
 
@@ -143,21 +131,21 @@ in
       home.stateVersion = "22.11";
       home = {
         file = {
-          ".config/gtk-3.0/settings.ini".source = ./dotfiles/configs/gtk-3.0/settings-dark.ini;
+          ".config/gtk-3.0/settings.ini".source = ./configs/gtk-3.0/settings-dark.ini;
          
-          ".config/sakura/sakura.conf".source = ./dotfiles/configs/sakura/sakura.conf;
-          ".config/Kvantum".source = ./dotfiles/configs/Kvantum; 
-          ".config/qt5ct".source = ./dotfiles/configs/qt5ct;
-          ".config/omf".source = ./dotfiles/configs/omf;
-          ".config/fish".source = ./dotfiles/configs/fish;
-          ".config/dconf".source = ./dotfiles/configs/dconf;
+          ".config/sakura/sakura.conf".source = ./configs/sakura/sakura.conf;
+          ".config/Kvantum".source = ./configs/Kvantum; 
+          ".config/qt5ct".source = ./configs/qt5ct;
+          ".config/omf".source = ./configs/omf;
+          ".config/fish".source = ./configs/fish;
+          ".config/dconf".source = ./configs/dconf;
 
-           ".themes/Seventeen-Dark".source = ./dotfiles/themes/Seventeen-Dark;
-          ".icons".source = ./dotfiles/icons;
+           ".themes/Seventeen-Dark".source = ./themes/Seventeen-Dark;
+          ".icons".source = ./icons;
 
-          ".local/share/fonts".source = ./dotfiles/locals/fonts;
-          ".local/share/fish".source = ./dotfiles/locals/fish;
-          ".local/share/omf".source = ./dotfiles/locals/omf;
+          ".local/share/fonts".source = ./locals/fonts;
+          ".local/share/fish".source = ./locals/fish;
+          ".local/share/omf".source = ./locals/omf;
         }; 
       };
     };
@@ -179,25 +167,25 @@ in
       }; 
       home = {
         file = {
-          ".config/awesome".source = ./dotfiles/configs/awesome;
+          ".config/awesome".source = ./configs/awesome;
 
-          ".config/gtk-3.0/settings.ini".source = ./dotfiles/configs/gtk-3.0/settings-light.ini;
-          ".config/gtk-3.0/colors.css".source = ./dotfiles/configs/gtk-3.0/colors.css;
-          ".config/gtk-3.0/gtk.css".source = ./dotfiles/configs/gtk-3.0/gtk.css;
+          ".config/gtk-3.0/settings.ini".source = ./configs/gtk-3.0/settings-light.ini;
+          ".config/gtk-3.0/colors.css".source = ./configs/gtk-3.0/colors.css;
+          ".config/gtk-3.0/gtk.css".source = ./configs/gtk-3.0/gtk.css;
 
-          ".config/sakura/sakura.conf".source = ./dotfiles/configs/sakura/sakura.conf;
-          ".config/Kvantum".source = ./dotfiles/configs/Kvantum; 
-          ".config/qt5ct".source = ./dotfiles/configs/qt5ct;
-          ".config/omf".source = ./dotfiles/configs/omf;
-          ".config/fish".source = ./dotfiles/configs/fish;
-          ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./dotfiles/configs/dconf;
+          ".config/sakura/sakura.conf".source = ./configs/sakura/sakura.conf;
+          ".config/Kvantum".source = ./configs/Kvantum; 
+          ".config/qt5ct".source = ./configs/qt5ct;
+          ".config/omf".source = ./configs/omf;
+          ".config/fish".source = ./configs/fish;
+          ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
           
-          ".themes/Seventeen-Light".source = ./dotfiles/themes/Seventeen-Light;
-          ".icons".source = ./dotfiles/icons; 
+          ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
+          ".icons".source = ./icons; 
 
-          ".local/share/fonts".source = ./dotfiles/locals/fonts;
-          ".local/share/fish".source = ./dotfiles/locals/fish;
-          ".local/share/omf".source = ./dotfiles/locals/omf;
+          ".local/share/fonts".source = ./locals/fonts;
+          ".local/share/fish".source = ./locals/fish;
+          ".local/share/omf".source = ./locals/omf;
         };
       };
     };    
