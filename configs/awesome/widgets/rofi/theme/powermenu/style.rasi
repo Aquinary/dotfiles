@@ -1,0 +1,97 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+configuration {
+	font:							"JetBrains Mono, Bold 10";
+    show-icons:                     false;
+	icon-theme: 					"Papirus";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+    border-radius:                  0px;
+    height:                         174px;
+    width:                          631px;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+
+
+listview {
+    background-color:               @background;
+    margin:                         8 0 0 0;
+    spacing:                        1%;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         horizontal;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ listview ];
+    spacing:                        1.5%;
+    padding:                        1% 0% 0% 1%;
+}
+
+element {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  0%;
+}
+
+element-text {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+	font:							"Material Icons 24";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         4.5% 2.7% 4.5% 2.7%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+    border-radius:                  0.2%;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
+
+element selected {
+    background-color:               @selected;
+    text-color:                     @foreground;
+    border:                  		0% 0% 0.0% 0.0%;
+    border-radius:                  0%;
+    border-color:                  	@border;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @foreground;
+}
