@@ -70,6 +70,7 @@ in
   environment.systemPackages = with pkgs; [
     dex
     ntfs3g
+    smem
     qemu
     gnome.gucharmap
     wget
