@@ -2,7 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local menubar = require("menubar")
 
-modkey = 'Mod1'
+modkey = 'Mod4'
 
 event = {
     root = {},
