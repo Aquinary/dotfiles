@@ -15,9 +15,9 @@ in
     ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
  
   networking.hostName = "yoshinon"; # Define your hostname.
 
@@ -54,7 +54,7 @@ in
     users.aquinary = {
       isNormalUser = true;
       description = "aquinary";
-      extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "storage" "libvirtd" ];
     };
   };
 
@@ -69,6 +69,7 @@ in
 
   environment.systemPackages = with pkgs; [
     dex
+    ntfs3g
     qemu
     gnome.gucharmap
     wget
@@ -118,7 +119,25 @@ in
           user = "aquinary"; 
          };
       };
+
+      libinput = {
+        enable = true; 
+        mouse.leftHanded = true;
+      };
+
+      
     };
+
+    # udev = {
+    #   enable = true;
+    #   extraRules = ''
+    #     ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"       
+    #   '';
+    # };
+    devmon.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
+ 
     gnome.gnome-keyring.enable = true;
     vnstat.enable = true;
   };
@@ -168,7 +187,7 @@ in
       }; 
       home = {
         file = {
-          ".config/awesome".source = ./configs/awesome;
+          ".config/awesome".source = config.lib.file.mkOutOfStoreSymlink ./configs/awesome;
 
           ".config/gtk-3.0/settings.ini".source = ./configs/gtk-3.0/settings-light.ini;
           ".config/gtk-3.0/colors.css".source = ./configs/gtk-3.0/colors.css;
@@ -178,14 +197,14 @@ in
           ".config/Kvantum".source = ./configs/Kvantum; 
           ".config/qt5ct".source = ./configs/qt5ct;
           ".config/omf".source = ./configs/omf;
-          ".config/fish".source = ./configs/fish;
+          ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ./configs/fish;
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
           
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
 
           ".local/share/fonts".source = ./locals/fonts;
-          ".local/share/fish".source = ./locals/fish;
+          ".local/share/fish".source = config.lib.file.mkOutOfStoreSymlink ./locals/fish;
           ".local/share/omf".source = ./locals/omf;
         };
       };
