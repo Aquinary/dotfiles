@@ -73,6 +73,7 @@ in
     smem
     qemu
     gnome.gucharmap
+    ncdu
     volctl
     numlockx
     wget
@@ -80,7 +81,6 @@ in
     git
     nix-output-monitor
     ranger
-    gtk3
     gnome.seahorse
     (pkgs.callPackage ./pkgs/caja-extensions { })
     unzip
