@@ -54,7 +54,7 @@ in
     users.aquinary = {
       isNormalUser = true;
       description = "aquinary";
-      extraGroups = [ "networkmanager" "wheel" "storage" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "storage" "audio" "libvirtd" ];
     };
   };
 
@@ -73,6 +73,8 @@ in
     smem
     qemu
     gnome.gucharmap
+    volctl
+    numlockx
     wget
     material-icons
     git
@@ -197,7 +199,7 @@ in
           ".config/sakura/sakura.conf".source = ./configs/sakura/sakura.conf;
           ".config/Kvantum".source = ./configs/Kvantum; 
           ".config/qt5ct".source = ./configs/qt5ct;
-          ".config/omf".source = ./configs/omf;
+          ".config/omf".source = config.lib.file.mkOutOfStoreSymlink ./configs/omf;
           ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ./configs/fish;
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
           
@@ -206,7 +208,7 @@ in
 
           ".local/share/fonts".source = ./locals/fonts;
           ".local/share/fish".source = config.lib.file.mkOutOfStoreSymlink ./locals/fish;
-          ".local/share/omf".source = ./locals/omf;
+          ".local/share/omf".source = config.lib.file.mkOutOfStoreSymlink ./locals/omf;
         };
       };
     };    

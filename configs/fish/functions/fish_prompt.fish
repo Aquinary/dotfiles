@@ -1,1 +1,1 @@
-/home/q/.local/share/omf/themes/boxfish/fish_prompt.fish
+/home/aquinary/.local/share/omf/themes/boxfish/fish_prompt.fish
