@@ -1,6 +1,7 @@
 local LIP = require 'LIP';
-local history_file = "/home/q/.config/history.ini"
 local homeDir = os.getenv('HOME')
+local history_file = homeDir .. "/.config/history.ini"
+
 
 --[[ Метод-разделитель ]]
 function split (inputstr, sep)
