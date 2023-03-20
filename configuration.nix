@@ -117,6 +117,7 @@ in
     vscode
     pciutils
     tdesktop
+    haruna
     vivaldi
     rofi
     lxappearance
@@ -229,6 +230,7 @@ in
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
           ".config/Code".source = config.lib.file.mkOutOfStoreSymlink ./configs/Code;
           ".config/copyq".source = config.lib.file.mkOutOfStoreSymlink ./configs/copyq;
+          ".config/Crow Translate".source = config.lib.file.mkOutOfStoreSymlink ./configs/CrowTranslate;
 
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
