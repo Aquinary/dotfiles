@@ -60,12 +60,18 @@ in
   };
 
 
-  virtualisation.libvirtd = { 
-    enable = true;
-    qemu.verbatimConfig = ''
-      user = "aquinary"
-      nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
-    '';
+  virtualisation = {
+    libvirtd = { 
+      enable = true;
+      qemu.verbatimConfig = ''
+        user = "aquinary"
+        nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
+      '';
+    };
+
+    docker = {
+      enable = true;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -118,6 +124,7 @@ in
     sublime4
     gparted
     xfce.catfish
+    docker-compose
     libsForQt5.qtstyleplugin-kvantum
   ];
 
@@ -221,6 +228,7 @@ in
           ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ./configs/fish;
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
           ".config/Code".source = config.lib.file.mkOutOfStoreSymlink ./configs/Code;
+          ".config/copyq".source = config.lib.file.mkOutOfStoreSymlink ./configs/copyq;
 
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 

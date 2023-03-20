@@ -580,13 +580,6 @@
                                     "id": "vscode.menubar.separator"
                                 },
                                 {
-                                    "id": "workbench.action.splitEditorInGroup",
-                                    "label": "Split in &&Group"
-                                },
-                                {
-                                    "id": "vscode.menubar.separator"
-                                },
-                                {
                                     "id": "workbench.action.editorLayoutSingle",
                                     "label": "&&Single"
                                 },
@@ -696,8 +689,7 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location",
-                        "enabled": false
+                        "label": "&&Last Edit Location"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -707,6 +699,17 @@
                         "label": "Switch &&Editor",
                         "submenu": {
                             "items": [
+                                {
+                                    "id": "workbench.action.focusFirstSideEditor",
+                                    "label": "&&First Side in Editor"
+                                },
+                                {
+                                    "id": "workbench.action.focusSecondSideEditor",
+                                    "label": "&&Second Side in Editor"
+                                },
+                                {
+                                    "id": "vscode.menubar.separator"
+                                },
                                 {
                                     "id": "workbench.action.nextEditor",
                                     "label": "&&Next Editor"
@@ -1352,11 +1355,6 @@
                 "label": "Ctrl+NumPad0",
                 "isNative": false,
                 "userSettingsLabel": "ctrl+numpad0"
-            },
-            "workbench.action.splitEditorInGroup": {
-                "label": "Ctrl+K Ctrl+Shift+\\",
-                "isNative": false,
-                "userSettingsLabel": "ctrl+k ctrl+shift+\\"
             },
             "workbench.action.toggleEditorGroupLayout": {
                 "label": "Shift+Alt+0",
