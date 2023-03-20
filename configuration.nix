@@ -56,10 +56,18 @@ in
       description = "aquinary";
       extraGroups = [ "networkmanager" "wheel" "storage" "audio" "libvirtd" ];
     };
+    groups.libvirtd.members = [ "root" "aquinary"];
   };
 
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = { 
+    enable = true;
+    qemu.verbatimConfig = ''
+      user = "aquinary"
+      nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
+    '';
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   qt5 = {
@@ -72,29 +80,33 @@ in
     ntfs3g
     smem
     qemu
+    OVMF
     gnome.gucharmap
     ncdu
     volctl
-    numlockx
     wget
     material-icons
     git
-    nix-output-monitor
+    pavucontrol
     ranger
     gnome.seahorse
     (pkgs.callPackage ./pkgs/caja-extensions { })
     unzip
     unrar
+    input-remapper
     feh
     neofetch
     virt-manager
     mate.engrampa
     btop
+    killall
     lm_sensors
     copyq
+    calc
     crow-translate
     sakura
     vscode
+    pciutils
     tdesktop
     vivaldi
     rofi
@@ -123,6 +135,7 @@ in
          };
       };
 
+      
       libinput = {
         enable = true; 
         mouse.leftHanded = true;
@@ -131,12 +144,14 @@ in
       
     };
 
-    # udev = {
-    #   enable = true;
-    #   extraRules = ''
-    #     ACTION=="add", SUBSYSTEMS=="usb", SUBSYSTEM=="block", ENV{ID_FS_USAGE}=="filesystem", RUN{program}+="${pkgs.systemd}/bin/systemd-mount --no-block --automount=yes --collect $devnode /media"       
-    #   '';
-    # };
+    picom = {
+      enable = true;
+      vSync = true;
+      fade = true;
+      fadeSteps = [0.01 0.01];
+      fadeDelta = 2;
+    };
+
     devmon.enable = true;
     gvfs.enable = true;
     udisks2.enable = true;
@@ -202,7 +217,7 @@ in
           ".config/omf".source = config.lib.file.mkOutOfStoreSymlink ./configs/omf;
           ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ./configs/fish;
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
-          
+
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
 

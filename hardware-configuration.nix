@@ -10,7 +10,11 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "vfio" "vfio_iommu_type1" "vfio_pci" ];
+  boot.kernelParams = ["intel_iommu=on"];
+  boot.extraModprobeConfig ="options vfio-pci ids=1002:67df";
+  boot.blacklistedKernelModules = ["amdgpu"];
+  boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
