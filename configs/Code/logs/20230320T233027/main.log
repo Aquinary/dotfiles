@@ -1,0 +1,4 @@
+2023-03-20 23:30:27.667 [info] update#setState idle
+2023-03-20 23:30:29.757 [info] Starting extension host with pid 192915 (fork() took 31 ms).
+2023-03-20 23:30:43.044 [info] Extension host with pid 192915 exited with code: 0, signal: null.
+2023-03-20 23:30:43.054 [info] Waiting for extension host with pid 192915 to exit.

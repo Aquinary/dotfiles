@@ -1,0 +1,2 @@
+2023-03-20 19:25:53.343 [info] Initial editor state {"filesToOpenOrCreate":[{"fileUri":{"$mid":1,"path":"/run/media/aquinary/Aquinary/NixOS/postInstall.sh","scheme":"file"},"type":1,"exists":true,"options":{}}],"filesToDiff":[],"filesToMerge":[]}
+2023-03-20 19:25:56.969 [info] [perf] Render performance baseline is 28ms

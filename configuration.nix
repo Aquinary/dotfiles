@@ -89,6 +89,9 @@ in
     git
     pavucontrol
     ranger
+    discord
+    jetbrains.webstorm
+    openh264
     gnome.seahorse
     (pkgs.callPackage ./pkgs/caja-extensions { })
     unzip
@@ -217,6 +220,7 @@ in
           ".config/omf".source = config.lib.file.mkOutOfStoreSymlink ./configs/omf;
           ".config/fish".source = config.lib.file.mkOutOfStoreSymlink ./configs/fish;
           ".config/dconf".source = config.lib.file.mkOutOfStoreSymlink ./configs/dconf;
+          ".config/Code".source = config.lib.file.mkOutOfStoreSymlink ./configs/Code;
 
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
