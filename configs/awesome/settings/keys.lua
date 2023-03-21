@@ -114,9 +114,9 @@ event.root.keys = gears.table.join(
     awful.key({}, "Menu", function() awful.spawn.with_shell('~/.config/awesome/widgets/rofi/menu.sh') end, {description = 'Запуск меню Rofi'}),
     awful.key({ modkey }, "Tab", function() awful.spawn.with_shell('~/.config/awesome/widgets/rofi/windows.sh') end, {description = 'Просмотр открытых окон'}),
     awful.key({}, "Pause", function() awful.spawn.with_shell('~/.config/awesome/widgets/rofi/powermenu.sh') end, {description = 'Запуск меню выключения'}),
-    awful.key({}, "Print", function() os.execute('deepin-screenshot -f -n') end, {description = 'Скриншот всей рабочей области'}),
+    awful.key({}, "Print", function() awful.spawn('flameshot screen') end, {description = 'Скриншот всей рабочей области'}),
     awful.key({ modkey }, "v", function() os.execute('copyq toggle') end, {description = 'Меню буффера обмена'}),
-    awful.key({ modkey }, "Print", function() os.execute('deepin-screenshot -n') end, {description = 'Скриншот выделенной области'}),
+    awful.key({ modkey }, "Print", function() awful.spawn('flameshot gui') end, {description = 'Скриншот выделенной области'}),
     awful.key({ modkey }, "`", function()
         awful.spawn.with_shell('tdrop -am -w 50% -h 50% -y 27% -x 26% sakura')
     end, {description = 'Скриншот выделенной области'}),

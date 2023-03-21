@@ -17,15 +17,25 @@
   boot.supportedFilesystems = [ "ntfs" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b1b6d6c3-e253-4222-a5f3-0202e06327cd";
+  fileSystems = {
+    "/" = { 
+      device = "/dev/disk/by-uuid/b1b6d6c3-e253-4222-a5f3-0202e06327cd";
       fsType = "ext4";
     };
 
-  fileSystems."/boot/efi" =
+    "/boot/efi" =
     { device = "/dev/disk/by-uuid/B87A-89EE";
       fsType = "vfat";
     };
+
+    "/run/media/Storage" = {
+      device = "/dev/disk/by-label/Storage";
+      fsType = "auto";
+      options = [ "nosuid" "nodev" "nofail" "x-gvfs-show"];
+    };
+  };
+
+
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/7abee2bc-b669-4de7-97c9-9ec0b0baf74e"; }

@@ -114,6 +114,7 @@ in
     calc
     crow-translate
     sakura
+    flameshot
     vscode
     pciutils
     tdesktop
