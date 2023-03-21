@@ -232,6 +232,7 @@ in
           ".config/Code".source = config.lib.file.mkOutOfStoreSymlink ./configs/Code;
           ".config/copyq".source = config.lib.file.mkOutOfStoreSymlink ./configs/copyq;
           ".config/Crow Translate".source = config.lib.file.mkOutOfStoreSymlink ./configs/CrowTranslate;
+          ".config/flameshot".source = config.lib.file.mkOutOfStoreSymlink ./configs/flameshot;
 
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
