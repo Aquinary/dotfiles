@@ -93,7 +93,7 @@ awful.rules.rules = {
     },
     {
         -- Менеджер буффера по центру
-        rule_any = { instance = {"copyq", "zenity"} },
+        rule_any = { instance = {"copyq", "gcr-prompter"} },
         properties = {
            floating = true,
            callback = function (c)
