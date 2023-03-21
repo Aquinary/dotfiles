@@ -11,4 +11,10 @@ configs/Code/Backups
 configs/Code/Cache
 configs/Code/Local Storage
 configs/Code/User/History
+configs/Code/CachedData
+configs/Code/GPUCache
+configs/Code/logs
+configs/Code/CachedExtensions
 configs/copyq
+configs/Code/code.lock
+locals/fish/fish_history
