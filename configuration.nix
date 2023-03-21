@@ -114,6 +114,7 @@ in
       copyq
       calc
       crow-translate
+      anydesk
       sakura
       flameshot
       vscode

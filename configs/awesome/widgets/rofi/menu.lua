@@ -1,6 +1,7 @@
 local LIP = require 'LIP';
 local homeDir = os.getenv('HOME')
 local history_file = homeDir .. "/.config/history.ini"
+local exclude = require 'exclude';
 
 
 --[[ Метод-разделитель ]]
@@ -23,6 +24,16 @@ function merge(t1, t2)
       end
     end  
     return t1
+end
+
+function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
 end
 
 --[[ Обноавляет историю запуска ]]--
@@ -83,14 +94,15 @@ function get_xdg_apps()
 			-- Парсим .desktop файл
 			local ini = LIP.load(path .. val)
 			local ini_short = ini['Desktop Entry']
-			if ini_short then
+			if ini_short and has_value(exclude.apps, ini_short['Name']) == false then
 				-- Данное условие убирает лишние пункты в меню
 				if ini_short['NoDisplay'] == false or not ini_short['NoDisplay'] then
 					local icon = ini_short['Icon']
 					local exec = val
-					local name = ini_short['Name[ru]']
+					name = ini_short['Name']
+					-- local name = ini_short['Name[ru]']
 					if name == nil then
-						name = ini_short['Name']
+						
 					end
 
 					local runs, _ = history_read(exec)
