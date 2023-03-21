@@ -3,25 +3,31 @@ configs/awesome/.idea/modules.xml
 configs/awesome/.idea/vcs.xml
 configs/awesome/.idea/dictionaries/aquinary.xml
 configs/awesome/.idea/inspectionProfiles/Project_Default.xml
-locals/fish/fish_history
+
 configs/dconf/user
-configs/Code/User/History
+
 configs/Code/Service Worker
 configs/Code/Backups
 configs/Code/Cache
 configs/Code/Local Storage
-configs/Code/User/History
 configs/Code/CachedData
 configs/Code/GPUCache
 configs/Code/logs
-configs/Code/User/globalStorage
+configs/Code/Session Storage
 configs/Code/CachedExtensions
+configs/Code/TransportSecurity
 configs/Code/User/workspaceStorage
-
+configs/Code/User/globalStorage
+configs/Code/User/History
 configs/Code/code.lock
-locals/fish/fish_history
 configs/Code/Network Persistent State
-configs/copyq/copyq_*.*
 
-locals/fish/fish_history
 configs/copyq/copyq.lock
+
+
+
+configs/copyq/copyq_geometry.ini.lock.rmlock
+configs/copyq/copyq_geometry.ini.lock
+configs/copyq/copyq_geometry.ini.lock.rmlock.rmlock
+configs/copyq/copyq_geometry.ini.lock.rmlock.rmlock.rmlock
+configs/copyq/copyq_tab_JmNsaXBib2FyZA==.dat

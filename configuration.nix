@@ -81,55 +81,68 @@ in
     platformTheme = "qt5ct";
   };
 
-  environment.systemPackages = with pkgs; [
-    dex
-    ntfs3g
-    smem
-    qemu
-    OVMF
-    gnome.gucharmap
-    ncdu
-    volctl
-    wget
-    material-icons
-    git
-    pavucontrol
-    ranger
-    discord
-    jetbrains.webstorm
-    openh264
-    gnome.seahorse
-    (pkgs.callPackage ./pkgs/caja-extensions { })
-    unzip
-    unrar
-    input-remapper
-    feh
-    neofetch
-    virt-manager
-    mate.engrampa
-    btop
-    killall
-    lm_sensors
-    copyq
-    calc
-    crow-translate
-    sakura
-    flameshot
-    vscode
-    pciutils
-    tdesktop
-    haruna
-    vivaldi
-    rofi
-    lxappearance
-    lua
-    sublime4
-    gparted
-    xfce.catfish
-    docker-compose
-    libsForQt5.qtstyleplugin-kvantum
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      dex
+      ntfs3g
+      smem
+      qemu
+      OVMF
+      gnome.gucharmap
+      ncdu
+      volctl
+      wget
+      material-icons
+      git
+      pavucontrol
+      ranger
+      discord
+      jetbrains.webstorm
+      openh264
+      gnome.seahorse
+      (pkgs.callPackage ./pkgs/caja-extensions { })
+      unzip
+      unrar
+      input-remapper
+      feh
+      neofetch
+      virt-manager
+      mate.engrampa
+      btop
+      killall
+      lm_sensors
+      copyq
+      calc
+      crow-translate
+      sakura
+      flameshot
+      vscode
+      pciutils
+      tdesktop
+      haruna
+      vivaldi
+      rofi
+      xdg-user-dirs
+      lxappearance
+      lua
+      sublime4
+      gparted
+      xfce.catfish
+      docker-compose
+      libsForQt5.qtstyleplugin-kvantum
+    ];
 
+    etc."xdg/user-dirs.defaults".text = ''
+      DESKTOP=Desktop
+      DOWNLOAD=Downloads
+      TEMPLATES=Templates
+      PUBLICSHARE=Public
+      DOCUMENTS=Documents
+      MUSIC=Music
+      PICTURES=Pictures
+      VIDEOS=Videos
+    '';
+  };
   
   fonts.fonts = with pkgs; [
     material-icons
@@ -233,6 +246,10 @@ in
           ".config/copyq".source = config.lib.file.mkOutOfStoreSymlink ./configs/copyq;
           ".config/Crow Translate".source = config.lib.file.mkOutOfStoreSymlink ./configs/CrowTranslate;
           ".config/flameshot".source = config.lib.file.mkOutOfStoreSymlink ./configs/flameshot;
+
+          ".config/user-dirs.conf".source = ./configs/user-dirs.conf;
+          ".config/user-dirs.dirs".source = ./configs/user-dirs.dirs;
+          ".config/user-dirs.locale".source = ./configs/user-dirs.locale;
 
           ".themes/Seventeen-Light".source = ./themes/Seventeen-Light;
           ".icons".source = ./icons; 
