@@ -1,8 +1,0 @@
-2023-03-20 19:29:09.741 [info] update#setState idle
-2023-03-20 19:29:10.763 [info] Starting extension host with pid 5964 (fork() took 10 ms).
-2023-03-20 19:29:39.745 [info] update#setState checking for updates
-2023-03-20 19:29:39.752 [info] update#setState available for download
-2023-03-20 19:34:44.801 [info] Extension host with pid 5964 exited with code: 0, signal: null.
-2023-03-20 19:34:45.827 [info] Starting extension host with pid 10949 (fork() took 19 ms).
-2023-03-20 19:57:20.085 [info] Waiting for extension host with pid 10949 to exit.
-2023-03-20 19:57:20.308 [info] Extension host with pid 10949 exited with code: 0, signal: null.

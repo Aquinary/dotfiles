@@ -1,8 +1,0 @@
-{
-    "editor.fontSize": 12,
-    "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
-    "terminal.integrated.fontSize": 12,
-    "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace', monospace",
-    "workbench.colorTheme": "Default Light+",
-    "security.workspace.trust.untrustedFiles": "open"
-}

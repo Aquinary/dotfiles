@@ -14,7 +14,14 @@ configs/Code/User/History
 configs/Code/CachedData
 configs/Code/GPUCache
 configs/Code/logs
+configs/Code/User/globalStorage
 configs/Code/CachedExtensions
-configs/copyq
+configs/Code/User/workspaceStorage
+
 configs/Code/code.lock
 locals/fish/fish_history
+configs/Code/Network Persistent State
+configs/copyq/copyq_*.*
+
+locals/fish/fish_history
+configs/copyq/copyq.lock
