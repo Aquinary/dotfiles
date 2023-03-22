@@ -117,7 +117,6 @@ in
       crow-translate
       anydesk
       sakura
-      jq
       flameshot
       vscode
       pciutils
