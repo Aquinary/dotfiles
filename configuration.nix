@@ -54,7 +54,7 @@ in
     users.aquinary = {
       isNormalUser = true;
       description = "aquinary";
-      extraGroups = [ "networkmanager" "wheel" "storage" "audio" "libvirtd" ];
+      extraGroups = [ "networkmanager" "wheel" "storage" "audio" "docker" "libvirtd" ];
     };
     groups.libvirtd.members = [ "root" "aquinary"];
   };
@@ -109,6 +109,7 @@ in
       virt-manager
       mate.engrampa
       btop
+      bitwarden
       killall
       lm_sensors
       copyq
@@ -116,6 +117,7 @@ in
       crow-translate
       anydesk
       sakura
+      jq
       flameshot
       vscode
       pciutils
