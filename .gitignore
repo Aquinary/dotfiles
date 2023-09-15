@@ -15,12 +15,19 @@ configs/Code/GPUCache
 configs/Code/logs
 configs/Code/Session Storage
 configs/Code/CachedExtensions
+configs/Code/CachedExtensionVSIXs
+configs/Code/CachedConfigurations
+configs/Code/DawnCache
+configs/Code/CachedProfilesData
+configs/Code/Crashpad
 configs/Code/TransportSecurity
 configs/Code/User/workspaceStorage
 configs/Code/User/globalStorage
 configs/Code/User/History
 configs/Code/code.lock
 configs/Code/Network Persistent State
+
+
 
 configs/copyq/copyq.lock
 
@@ -31,3 +38,7 @@ configs/copyq/copyq_geometry.ini.lock
 configs/copyq/copyq_geometry.ini.lock.rmlock.rmlock
 configs/copyq/copyq_geometry.ini.lock.rmlock.rmlock.rmlock
 configs/copyq/copyq_tab_JmNsaXBib2FyZA==.dat
+configs/Code/WebStorage/QuotaManager
+configs/copyq/copyq_geometry.ini
+configs/copyq/copyq_tabs.ini
+configs/Code/.org.chromium.Chromium.dPU3Qr

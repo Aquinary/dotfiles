@@ -1,8 +1,19 @@
 {
     "editor.fontSize": 12,
+    "editor.codeLens": true,
+    "typescript.implementationsCodeLens.enabled": true, 
+    "typescript.referencesCodeLens.enabled": true,
     "editor.fontFamily": "'JetBrains Mono', 'monospace', monospace",
     "terminal.integrated.fontSize": 12,
     "terminal.integrated.fontFamily": "'JetBrains Mono', 'monospace', monospace",
-    "workbench.colorTheme": "Default Light+",
-    "security.workspace.trust.untrustedFiles": "open"
+    "workbench.colorTheme": "Default Light Modern",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.iconTheme": "webstorm-icons",
+    "terminal.integrated.allowChords": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.suggest.showReferences": false,
+    "gptutor.openAIApiKey": "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",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true
 }
