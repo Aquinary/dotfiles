@@ -21,7 +21,7 @@ awful.rules.rules = {
     },
     {
         -- диалоговые окна выравниваем по центру
-        rule_any = { type = {"dialog"} },
+        rule_any = { type = {"dialog"}, name = {"Media viewer"} },
         properties = {
             placement = awful.placement.centered
         }
@@ -85,7 +85,7 @@ awful.rules.rules = {
     -- Другое
     {
         -- Исключаем картинку-в-картинке из тайлинга
-        rule_any = { name = {"Picture in picture", "Картинка в картинке"} },
+        rule_any = { name = {"Picture in picture", "Картинка в картинке", "Media viewer"} },
         properties = {
            floating = true,
            skip_taskbar = true,
