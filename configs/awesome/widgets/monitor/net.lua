@@ -195,7 +195,7 @@ local function worker(user_args)
             font = 'Droid Sans, Bold 9',
             widget = wibox.widget.textbox
         },
-        forced_width = 110,
+        forced_width = 120,
         layout = wibox.layout.fixed.horizontal
     }
 
