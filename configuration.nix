@@ -5,26 +5,32 @@
 { config, pkgs, lib, file, ... }:
 
 let 
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+  unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
 in
 {
   imports =
     [ 
       (import "${home-manager}/nixos")
       ./hardware-configuration.nix
+      ./packages.nix
     ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi";
+    };
+  };
  
-  networking.hostName = "yoshinon"; # Define your hostname.
+  networking = {
+    hostName = "yoshinon"; # Define your hostname.
+    networkmanager.enable = true;
+  };
 
   security.polkit.enable = true;
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
@@ -59,7 +65,6 @@ in
     groups.libvirtd.members = [ "root" "aquinary"];
   };
 
-
   virtualisation = {
     libvirtd = { 
       enable = true;
@@ -68,71 +73,30 @@ in
         nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
       '';
     };
-
     docker = {
       enable = true;
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  qt5 = {
+  qt = {
     enable = true;
     platformTheme = "qt5ct";
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      dex
-      ntfs3g
-      smem
-      qemu
-      OVMF
-      gnome.gucharmap
-      ncdu
-      volctl
-      wget
-      material-icons
-      git
-      pavucontrol
-      ranger
-      discord
-      jetbrains.webstorm
-      openh264
-      gnome.seahorse
-      (pkgs.callPackage ./pkgs/caja-extensions { })
-      unzip
-      unrar
-      input-remapper
-      feh
-      neofetch
-      virt-manager
-      mate.engrampa
-      btop
-      bitwarden
-      killall
-      lm_sensors
-      copyq
-      calc
-      crow-translate
-      anydesk
-      sakura
-      flameshot
-      vscode
-      pciutils
-      tdesktop
-      haruna
-      vivaldi
-      rofi
-      xdg-user-dirs
-      lxappearance
-      lua
-      sublime4
-      gparted
-      xfce.catfish
-      docker-compose
-      libsForQt5.qtstyleplugin-kvantum
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+    permittedInsecurePackages = [
+      "openssl-1.1.1v" # временное решение проблемы https://discourse.nixos.org/t/stubborn-openssl-is-insecure-error-in-nixos-23-05/29555/3
     ];
+  };
+
+  environment = {
+  
 
     etc."xdg/user-dirs.defaults".text = ''
       DESKTOP=Desktop
@@ -160,14 +124,16 @@ in
           enable = true;
           user = "aquinary"; 
          };
+        
+         
       };
 
-      
       libinput = {
         enable = true; 
-        mouse.leftHanded = true;
+        mouse.leftHanded = true;  # меняем пкм и лкм местами
       };
 
+      xrandrHeads = [ "DP-1" { output = "HDMI-1"; primary = true; } ];
       
     };
 
@@ -191,7 +157,7 @@ in
     root = {
       home.username = "root";
       home.homeDirectory = "/root";
-      home.stateVersion = "22.11";
+      home.stateVersion = "23.05";
       home = {
         file = {
           ".config/gtk-3.0/settings.ini".source = ./configs/gtk-3.0/settings-dark.ini;
@@ -217,7 +183,7 @@ in
     aquinary = {config, pkgs, ...}: {
       home.username = "aquinary";
       home.homeDirectory = "/home/aquinary";
-      home.stateVersion = "22.11";
+      home.stateVersion = "23.05";
       home.packages = with pkgs; [
         mate.mate-polkit
       ];
@@ -263,6 +229,6 @@ in
       };
     };    
   };
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
 }
